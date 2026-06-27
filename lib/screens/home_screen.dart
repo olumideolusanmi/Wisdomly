@@ -41,12 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final ink = themeProvider.textColor;
-    final muted = themeProvider.secondaryTextColor;
+    const ink = Colors.white;
+    final muted = Colors.white.withOpacity(0.78);
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(gradient: themeProvider.currentGradient),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFFE56B6F), Color(0xFFD45D72)],
+          ),
+        ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
@@ -224,14 +230,15 @@ class _CircleIcon extends StatelessWidget {
 
 class _QuoteCard extends StatelessWidget {
   final Quote quote;
-  final Color ink;
-  final Color muted;
+  // Card is white, so use the dark on-card palette regardless of page bg.
+  static const Color _cardInk = AppTheme.textColor;
+  static const Color _cardMuted = AppTheme.secondaryTextColor;
 
   const _QuoteCard({
     super.key,
     required this.quote,
-    required this.ink,
-    required this.muted,
+    required Color ink,
+    required Color muted,
   });
 
   @override
@@ -269,12 +276,12 @@ class _QuoteCard extends StatelessWidget {
                 quote.text,
                 style: Theme.of(
                   context,
-                ).textTheme.bodyLarge?.copyWith(color: ink),
+                ).textTheme.bodyLarge?.copyWith(color: _cardInk),
               ),
             ),
           ),
           const SizedBox(height: 16),
-          Container(height: 1, color: muted.withOpacity(0.2)),
+          Container(height: 1, color: _cardMuted.withOpacity(0.2)),
           const SizedBox(height: 16),
           Row(
             children: [
@@ -291,7 +298,7 @@ class _QuoteCard extends StatelessWidget {
                 child: Text(
                   quote.author.toUpperCase(),
                   style: GoogleFonts.dmSans(
-                    color: muted,
+                    color: _cardMuted,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.4,
