@@ -16,7 +16,7 @@ export default function Contact() {
         <div className="container mx-auto px-4 md:px-6 max-w-2xl">
           <div className="space-y-6">
             <a
-              href="mailto:hello@inspiro.app"
+              href="mailto:hello@quotely.app"
               className="flex items-center gap-6 p-6 rounded-3xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 hover:border-brand-200 dark:hover:border-brand-800 transition-colors group"
             >
               <div className="w-12 h-12 rounded-2xl bg-white dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors shadow-sm">
@@ -24,12 +24,12 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">Email Support</h3>
-                <p className="text-zinc-500 font-medium font-sans">hello@inspiro.app</p>
+                <p className="text-zinc-500 font-medium font-sans">hello@quotely.app</p>
               </div>
             </a>
 
             <a
-              href="https://twitter.com/inspiroapp"
+              href="https://twitter.com/quotelyapp"
               target="_blank"
               className="flex items-center gap-6 p-6 rounded-3xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 hover:border-brand-200 dark:hover:border-brand-800 transition-colors group"
             >
@@ -38,12 +38,12 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">Follow on X</h3>
-                <p className="text-zinc-500 font-medium font-sans">@inspiroapp</p>
+                <p className="text-zinc-500 font-medium font-sans">@quotelyapp</p>
               </div>
             </a>
 
             <a
-              href="https://github.com/inspiro"
+              href="https://github.com/quotely"
               target="_blank"
               className="flex items-center gap-6 p-6 rounded-3xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800 hover:border-brand-200 dark:hover:border-brand-800 transition-colors group"
             >
@@ -52,7 +52,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">GitHub</h3>
-                <p className="text-zinc-500 font-medium font-sans">@inspiro</p>
+                <p className="text-zinc-500 font-medium font-sans">@quotely</p>
               </div>
             </a>
           </div>

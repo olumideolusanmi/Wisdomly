@@ -14,10 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Inspiro - Daily Motivational Quotes",
-  description: "Inspiro gives you quick daily inspiration through short motivational quotes. Simple, harmless, and effective.",
+  title: "Quotely - Daily Motivational Quotes",
+  description: "Quotely gives you quick daily inspiration through short motivational quotes. Simple, harmless, and effective.",
   icons: {
     icon: "/app_logo.png",
+  },
+  verification: {
+    google: "bPaHCADNvxARRv3dHBf4u6zyYCDRCB8dgj2k7gRCTVs",
   },
 };
 

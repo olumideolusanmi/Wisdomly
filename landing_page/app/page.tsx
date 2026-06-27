@@ -33,7 +33,7 @@ export default function Home() {
       {/* Bottom CTA */}
       <section className="py-32 bg-zinc-950 relative overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#6366f1_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#e56b6f_1px,transparent_1px)] bg-[size:32px_32px]"></div>
         <div className="absolute inset-0 bg-linear-to-b from-transparent to-zinc-950"></div>
 
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
@@ -41,7 +41,7 @@ export default function Home() {
             Ready for inspiration? <br /><span className="text-brand-500">Get started.</span>
           </h2>
           <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto font-medium">
-            Inspiro is the simple, distraction-free way to find motivation.
+            Quotely is the simple, distraction-free way to find motivation.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link

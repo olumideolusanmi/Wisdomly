@@ -55,7 +55,7 @@ export function Hero() {
             transition={{ delay: 0.2 }}
             className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto font-medium"
           >
-            Inspiro provides short motivational quotes for daily inspiration. No advice, no tracking, just words that feel good.
+            Quotely provides short motivational quotes for daily inspiration. No advice, no tracking, just words that feel good.
           </motion.p>
         </div>
 

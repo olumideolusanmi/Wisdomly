@@ -11,11 +11,11 @@ import {
 const FAQS = [
   {
     question: "Do I need to create an account?",
-    answer: "No. Inspiro works instantly without any signup. Just open the app and get inspired."
+    answer: "No. Quotely works instantly without any signup. Just open the app and get inspired."
   },
   {
     question: "Is it free to use?",
-    answer: "Yes, Inspiro is completely free to download and use."
+    answer: "Yes, Quotely is completely free to download and use."
   },
   {
     question: "Can I share the quotes?",
@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     question: "Does it work offline?",
-    answer: "Yes! Inspiro works perfectly even without an internet connection."
+    answer: "Yes! Quotely works perfectly even without an internet connection."
   }
 ];
 
@@ -40,7 +40,7 @@ export function FAQ() {
             Frequently Asked <span className="text-brand-500">Questions</span>
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 font-medium font-sans">
-            Everything you need to know about Inspiro.
+            Everything you need to know about Quotely.
           </p>
         </div>
 

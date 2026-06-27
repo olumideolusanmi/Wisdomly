@@ -44,7 +44,7 @@ export function Features() {
             Simple. <span className="text-brand-500">Inspiring.</span>
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 font-medium">
-            Inspiro is built to give you that quick spark of positivity whenever you need it.
+            Quotely is built to give you that quick spark of positivity whenever you need it.
           </p>
         </div>
 

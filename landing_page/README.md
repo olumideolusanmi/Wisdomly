@@ -1,12 +1,12 @@
-# Inspiro
+# Quotely
 
-This is the landing page for **Inspiro** - a lightweight app that gives users quick daily inspiration through short motivational quotes.
+This is the landing page for **Quotely** - a lightweight app that gives users quick daily inspiration through short motivational quotes.
 
 Built with [Next.js](https://nextjs.org) and styled with Tailwind CSS.
 
-## About Inspiro
+## About Quotely
 
-Inspiro is a simple, harmless, single-purpose app designed to do one thing well: show a quote when the user asks for it.
+Quotely is a simple, harmless, single-purpose app designed to do one thing well: show a quote when the user asks for it.
 
 **Features:**
 - **Daily Inspiration**: Get quick daily inspiration.

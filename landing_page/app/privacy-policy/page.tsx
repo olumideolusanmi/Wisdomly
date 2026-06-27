@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
 
               <div className="prose dark:prose-invert prose-zinc prose-lg max-w-none font-sans">
                 <p className="lead text-xl text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed mb-12">
-                  At Inspiro ("we," "our," or "us"), we believe your inspiration is personal. 
+                  At Quotely ("we," "our," or "us"), we believe your inspiration is personal. 
                   We are committed to protecting your privacy and ensuring you have a safe, harmless experience.
                 </p>
 
@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
                     </h2>
                     <div className="bg-brand-50 dark:bg-brand-900/10 p-6 rounded-2xl border border-brand-100 dark:border-brand-800/30 mb-6">
                       <p className="mb-0 font-medium text-brand-900 dark:text-brand-100">
-                        Inspiro is designed as a standalone utility. <strong>We do not collect, store, or transmit your personal data, location, or usage habits.</strong> Everything stays on your device.
+                        Quotely is designed as a standalone utility. <strong>We do not collect, store, or transmit your personal data, location, or usage habits.</strong> Everything stays on your device.
                       </p>
                     </div>
                   </div>
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
                       No Accounts Required
                     </h2>
                     <p>
-                      You do not need to create an account to use Inspiro. The app works instantly upon download.
+                      You do not need to create an account to use Quotely. The app works instantly upon download.
                     </p>
                   </div>
 
@@ -81,8 +81,8 @@ export default function PrivacyPolicy() {
                     <p>
                       If you have questions about this Privacy Policy, please contact us at:
                     </p>
-                    <a href="mailto:hello@inspiro.app" className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold no-underline hover:underline">
-                      hello@inspiro.app
+                    <a href="mailto:hello@quotely.app" className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold no-underline hover:underline">
+                      hello@quotely.app
                     </a>
                   </div>
 
