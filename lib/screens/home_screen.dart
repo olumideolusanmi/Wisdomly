@@ -111,6 +111,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: _generateNewQuote,
                     icon: const Icon(Icons.auto_awesome, size: 20),
                     label: const Text('Surprise Me'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: AppTheme.primaryColor,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 18,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: 0,
+                    ),
                   ),
                 ),
               ],
@@ -143,14 +155,14 @@ class _Header extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: AppTheme.primaryColor,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(12),
           ),
           alignment: Alignment.center,
           child: Text(
             'Q',
             style: GoogleFonts.playfairDisplay(
-              color: Colors.white,
+              color: AppTheme.primaryColor,
               fontSize: 22,
               fontWeight: FontWeight.w700,
               fontStyle: FontStyle.italic,
@@ -196,7 +208,7 @@ class _CircleIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white.withOpacity(0.6),
+      color: Colors.white.withOpacity(0.18),
       shape: const CircleBorder(),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -351,8 +363,8 @@ class _PillAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fg = highlight ? Colors.white : ink;
-    final bg = highlight ? AppTheme.primaryColor : Colors.white;
+    final fg = highlight ? AppTheme.primaryColor : ink;
+    final bg = highlight ? Colors.white : Colors.white.withOpacity(0.18);
     return Material(
       color: bg,
       borderRadius: BorderRadius.circular(40),

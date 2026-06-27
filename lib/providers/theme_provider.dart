@@ -9,11 +9,11 @@ class ThemeProvider extends ChangeNotifier {
 
   // Define gradients here for easy access
   static const List<LinearGradient> gradients = [
-    // 0: Quotely Cream
+    // 0: Quotely Coral (brand)
     LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: [Color(0xFFFDF6EC), Color(0xFFF5E3D0)],
+      colors: [Color(0xFFE56B6F), Color(0xFFD45D72)],
     ),
     // 1: Sunset
     LinearGradient(
@@ -47,10 +47,12 @@ class ThemeProvider extends ChangeNotifier {
     ),
   ];
 
+  // Coral (0) and Night (5) need light text; pastel gradients keep dark text.
+  bool get _isDarkOnLight => _themeIndex == 0 || _themeIndex == 5;
   Color get textColor =>
-      _themeIndex == 5 ? Colors.white : const Color(0xFF2A2D34);
+      _isDarkOnLight ? Colors.white : const Color(0xFF2A2D34);
   Color get secondaryTextColor =>
-      _themeIndex == 5 ? Colors.white70 : const Color(0xFF6B6F76);
+      _isDarkOnLight ? Colors.white.withOpacity(0.78) : const Color(0xFF6B6F76);
 
   ThemeProvider() {
     _loadTheme();
