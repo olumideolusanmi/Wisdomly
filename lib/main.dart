@@ -6,11 +6,11 @@ import 'providers/favorites_provider.dart';
 import 'providers/theme_provider.dart';
 
 void main() {
-  runApp(const InspiroApp());
+  runApp(const QuotelyApp());
 }
 
-class InspiroApp extends StatelessWidget {
-  const InspiroApp({super.key});
+class QuotelyApp extends StatelessWidget {
+  const QuotelyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class InspiroApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: MaterialApp(
-        title: 'Inspiro',
+        title: 'Quotely',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         home: const HomeScreen(),

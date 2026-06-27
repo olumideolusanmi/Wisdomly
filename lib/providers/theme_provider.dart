@@ -9,11 +9,11 @@ class ThemeProvider extends ChangeNotifier {
 
   // Define gradients here for easy access
   static const List<LinearGradient> gradients = [
-    // 0: Default Soft Blue-Purple
+    // 0: Quotely Cream
     LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: [Color(0xFFF8F9FE), Color(0xFFE8EAF6)],
+      colors: [Color(0xFFFDF6EC), Color(0xFFF5E3D0)],
     ),
     // 1: Sunset
     LinearGradient(
@@ -48,9 +48,9 @@ class ThemeProvider extends ChangeNotifier {
   ];
 
   Color get textColor =>
-      _themeIndex == 5 ? Colors.white : const Color(0xFF2D3142);
+      _themeIndex == 5 ? Colors.white : const Color(0xFF2A2D34);
   Color get secondaryTextColor =>
-      _themeIndex == 5 ? Colors.white70 : const Color(0xFF9C9EAE);
+      _themeIndex == 5 ? Colors.white70 : const Color(0xFF6B6F76);
 
   ThemeProvider() {
     _loadTheme();
