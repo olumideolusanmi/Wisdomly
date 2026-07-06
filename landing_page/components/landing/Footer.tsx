@@ -12,14 +12,14 @@ export function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6 group">
               <div className="w-8 h-8 relative overflow-hidden rounded-lg transition-transform group-hover:scale-110 duration-300">
-                <Image src="/app_logo.png" alt="Quotely" fill className="object-cover" />
+                <Image src="/app_logo.svg" alt="Wisdomly" fill className="object-cover" />
               </div>
               <span className="text-xl font-black text-zinc-900 dark:text-white tracking-tighter">
-                Quotely
+                Wisdomly
               </span>
             </Link>
             <p className="text-zinc-500 font-medium leading-relaxed font-sans pr-4">
-              Quotely provides short motivational quotes for daily inspiration. Simple, harmless, and effective.
+              Wisdomly delivers hand-picked wisdom in short, memorable quotes. Calm, ad-free, and offline-friendly.
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export function Footer() {
               <Link href="#" className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-950 transition-all">
                 <Github size={18} />
               </Link>
-              <Link href="mailto:hello@quotely.app" className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-brand-600 hover:text-white transition-all">
+              <Link href="mailto:hello@wisdomly.app" className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-brand-600 hover:text-white transition-all">
                 <Mail size={18} />
               </Link>
             </div>
@@ -74,10 +74,10 @@ export function Footer() {
 
         <div className="pt-8 border-t border-zinc-100 dark:border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-zinc-400 font-medium">
-            © 2026 Quotely. All rights reserved.
+            © 2026 Wisdomly. All rights reserved.
           </p>
           <p className="text-sm text-zinc-400 font-medium flex items-center gap-1">
-            Daily <span className="text-brand-500">Inspiration.</span>
+            Wisdom, <span className="text-brand-500">one quote at a time.</span>
           </p>
         </div>
       </div>

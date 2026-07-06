@@ -1,5 +1,5 @@
-name: inspiro
-description: "A new Flutter project."
+name: wisdomly
+description: "Wisdomly – wisdom, one quote at a time."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -48,15 +48,15 @@ flutter_launcher_icons:
   remove_alpha_ios: true
   image_path: "assets/app_logo.png"
   min_sdk_android: 21
-  adaptive_icon_background: "#E56B6F"
+  adaptive_icon_background: "#0D1830"
   adaptive_icon_foreground: "assets/app_logo_foreground.png"
 
 flutter_native_splash:
-  color: "#FDF6EC"
+  color: "#0D1830"
   image: "assets/splash_logo.png"
   android_12:
     image: "assets/splash_logo.png"
-    color: "#FDF6EC"
+    color: "#0D1830"
   android: true
   ios: true
   web: false

@@ -31,28 +31,28 @@ export default function Home() {
       <FAQ />
 
       {/* Bottom CTA */}
-      <section className="py-32 bg-zinc-950 relative overflow-hidden">
+      <section className="py-32 bg-ink-950 relative overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#e56b6f_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-        <div className="absolute inset-0 bg-linear-to-b from-transparent to-zinc-950"></div>
+        <div className="absolute inset-0 opacity-25 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-transparent to-ink-950"></div>
 
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight leading-tight">
-            Ready for inspiration? <br /><span className="text-brand-500">Get started.</span>
+            Ready for wisdom? <br /><span className="text-brand-400">Open the book.</span>
           </h2>
-          <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto font-medium">
-            Quotely is the simple, distraction-free way to find motivation.
+          <p className="text-xl text-ink-200 mb-12 max-w-2xl mx-auto font-medium">
+            Wisdomly is the calm, ad-free way to keep timeless insight close at hand.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link
               href="#start"
-              className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-zinc-950 bg-white rounded-2xl hover:bg-zinc-100 transition-all shadow-2xl hover:scale-105 active:scale-95"
+              className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-ink-950 bg-brand-400 rounded-2xl hover:bg-brand-300 transition-all shadow-2xl hover:scale-105 active:scale-95"
             >
-              <Sparkles className="mr-3 fill-current text-brand-500" size={24} />
-              Get Inspired Now
+              <Sparkles className="mr-3 fill-current text-ink-950" size={24} />
+              Start Reading
             </Link>
           </div>
-          <p className="mt-8 text-xs text-zinc-500 font-bold tracking-[0.2em] uppercase">
+          <p className="mt-8 text-xs text-ink-300 font-bold tracking-[0.2em] uppercase">
             FREE TO USE • NO ADS
           </p>
         </div>

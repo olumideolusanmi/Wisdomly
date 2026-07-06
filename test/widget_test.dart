@@ -1,20 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:inspiro/main.dart';
+import 'package:wisdomly/main.dart';
 
 void main() {
-  testWidgets('Inspire Me button smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const InspiroApp());
-
-    // Verify that we have a button "Inspire Me".
-    expect(find.text('Inspire Me'), findsOneWidget);
-
-    // Tap the 'Inspire Me' button and trigger a frame.
-    await tester.tap(find.text('Inspire Me'));
+  testWidgets('Turn the Page button smoke test', (WidgetTester tester) async {
+    await tester.pumpWidget(const WisdomlyApp());
     await tester.pumpAndSettle();
 
-    // Verify that the button is still there (smoke test passed)
-    expect(find.text('Inspire Me'), findsOneWidget);
+    expect(find.text('TURN THE PAGE'), findsOneWidget);
+
+    await tester.tap(find.text('TURN THE PAGE'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('TURN THE PAGE'), findsOneWidget);
   });
 }

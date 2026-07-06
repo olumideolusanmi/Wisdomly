@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import '../providers/theme_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -9,128 +7,62 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final ink = themeProvider.textColor;
-    final muted = themeProvider.secondaryTextColor;
-
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(gradient: themeProvider.currentGradient),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Header(ink: ink),
-                const SizedBox(height: 8),
-                Text(
-                  'PREFERENCES',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium?.copyWith(color: muted),
-                ),
-                const SizedBox(height: 16),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      _SettingsGroup(
-                        children: [
-                          _SettingsTile(
-                            icon: Icons.info_outline_rounded,
-                            title: 'About',
-                            subtitle:
-                                'Quotely delivers short bursts of inspiration, one quote at a time.',
-                            ink: ink,
-                            muted: muted,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      _SettingsGroup(
-                        children: [
-                          _SettingsTile(
-                            icon: Icons.shield_outlined,
-                            title: 'Privacy Policy',
-                            ink: ink,
-                            muted: muted,
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 14,
-                              color: muted,
-                            ),
-                            onTap: () => ScaffoldMessenger.of(context)
-                                .showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      'Privacy Policy coming soon',
-                                    ),
-                                  ),
-                                ),
-                          ),
-                          _Divider(muted: muted),
-                          _SettingsTile(
-                            icon: Icons.mail_outline_rounded,
-                            title: 'Contact Us',
-                            ink: ink,
-                            muted: muted,
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 14,
-                              color: muted,
-                            ),
-                            onTap: () => ScaffoldMessenger.of(context)
-                                .showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      'Reach us at support@quotely.app',
-                                    ),
-                                  ),
-                                ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 32),
-                      Center(
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 36,
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: AppTheme.primaryColor,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Q',
-                                style: GoogleFonts.playfairDisplay(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              'Quotely · v1.0.0',
-                              style: GoogleFonts.dmSans(
-                                color: muted,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 0.8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+      backgroundColor: AppTheme.paper,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _Header(),
+            Container(height: 1, color: AppTheme.rule),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  _SectionLabel('SECTION I · READ'),
+                  _Row(
+                    marker: '§ 1',
+                    title: 'About Wisdomly',
+                    subtitle:
+                        'Timeless wisdom in short quotes. A quiet corner of your phone.',
+                    ink: AppTheme.ink,
+                    muted: AppTheme.mutedInk,
                   ),
-                ),
-              ],
+                  _SectionLabel('SECTION II · LEGAL'),
+                  _Row(
+                    marker: '§ 2',
+                    title: 'Privacy Policy',
+                    subtitle: 'Read how we handle your data (spoiler: we don\'t).',
+                    ink: AppTheme.ink,
+                    muted: AppTheme.mutedInk,
+                    trailing: const Icon(Icons.north_east_rounded, size: 16, color: AppTheme.ink),
+                    onTap: () async {
+                      final uri = Uri.parse('https://wisdomly-tawny.vercel.app/privacy-policy');
+                      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Could not open privacy policy')),
+                        );
+                      }
+                    },
+                  ),
+                  _Row(
+                    marker: '§ 3',
+                    title: 'Contact',
+                    subtitle: 'Reach us at support@wisdomly.app',
+                    ink: AppTheme.ink,
+                    muted: AppTheme.mutedInk,
+                    trailing: const Icon(Icons.mail_outline_rounded, size: 16, color: AppTheme.ink),
+                    onTap: () => ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('support@wisdomly.app')),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  _Colophon(),
+                  const SizedBox(height: 32),
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -138,62 +70,55 @@ class SettingsScreen extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  final Color ink;
-  const _Header({required this.ink});
-
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Material(
-          color: Colors.white.withOpacity(0.18),
-          shape: const CircleBorder(),
-          child: InkWell(
-            customBorder: const CircleBorder(),
-            onTap: () => Navigator.pop(context),
-            child: Padding(
-              padding: const EdgeInsets.all(9),
-              child: Icon(Icons.arrow_back_rounded, size: 20, color: ink),
-            ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back_rounded, color: AppTheme.ink),
+                onPressed: () => Navigator.pop(context),
+              ),
+              const SizedBox(width: 4),
+              Text('MENU', style: AppTheme.caps(size: 11, color: AppTheme.mutedInk)),
+            ],
           ),
-        ),
-        const SizedBox(width: 12),
-        Text(
-          'Settings',
-          style: Theme.of(
-            context,
-          ).textTheme.displayMedium?.copyWith(color: ink),
-        ),
-      ],
-    );
-  }
-}
-
-class _SettingsGroup extends StatelessWidget {
-  final List<Widget> children;
-  const _SettingsGroup({required this.children});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
+          const SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text('Settings', style: AppTheme.serifDisplay(size: 34)),
           ),
         ],
       ),
-      child: Column(children: children),
     );
   }
 }
 
-class _SettingsTile extends StatelessWidget {
-  final IconData icon;
+class _SectionLabel extends StatelessWidget {
+  final String label;
+  const _SectionLabel(this.label);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 22, 24, 10),
+      child: Row(
+        children: [
+          Container(width: 18, height: 1, color: AppTheme.amber),
+          const SizedBox(width: 10),
+          Text(label, style: AppTheme.caps(size: 10, color: AppTheme.amber)),
+        ],
+      ),
+    );
+  }
+}
+
+class _Row extends StatelessWidget {
+  final String marker;
   final String title;
   final String? subtitle;
   final Widget? trailing;
@@ -201,8 +126,8 @@ class _SettingsTile extends StatelessWidget {
   final Color ink;
   final Color muted;
 
-  const _SettingsTile({
-    required this.icon,
+  const _Row({
+    required this.marker,
     required this.title,
     required this.ink,
     required this.muted,
@@ -214,50 +139,43 @@ class _SettingsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(20),
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: AppTheme.rule)),
+        ),
+        padding: const EdgeInsets.fromLTRB(24, 18, 24, 18),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 38,
-              height: 38,
-              decoration: BoxDecoration(
-                color: AppTheme.primaryColor.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(10),
+            SizedBox(
+              width: 40,
+              child: Text(
+                marker,
+                style: AppTheme.serifQuote(
+                  size: 15,
+                  color: AppTheme.amber,
+                  weight: FontWeight.w700,
+                  style: FontStyle.italic,
+                ),
               ),
-              child: Icon(icon, size: 20, color: AppTheme.primaryColor),
             ),
-            const SizedBox(width: 14),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.dmSans(
-                      color: ink,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: AppTheme.serifDisplay(size: 18, color: ink),
                   ),
                   if (subtitle != null) ...[
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle!,
-                      style: GoogleFonts.dmSans(
-                        color: muted,
-                        fontSize: 13,
-                        height: 1.4,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    const SizedBox(height: 6),
+                    Text(subtitle!, style: AppTheme.sansBody(color: muted, size: 13)),
                   ],
                 ],
               ),
             ),
-            if (trailing != null) ...[const SizedBox(width: 8), trailing!],
+            if (trailing != null) ...[const SizedBox(width: 10), trailing!],
           ],
         ),
       ),
@@ -265,15 +183,29 @@ class _SettingsTile extends StatelessWidget {
   }
 }
 
-class _Divider extends StatelessWidget {
-  final Color muted;
-  const _Divider({required this.muted});
-
+class _Colophon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: Container(height: 1, color: muted.withOpacity(0.15)),
+    return Center(
+      child: Column(
+        children: [
+          Container(width: 40, height: 1, color: AppTheme.amber),
+          const SizedBox(height: 12),
+          Text('COLOPHON', style: AppTheme.caps(size: 10, color: AppTheme.amber)),
+          const SizedBox(height: 10),
+          Text(
+            'Wisdomly',
+            style: AppTheme.serifQuote(
+              size: 22,
+              color: AppTheme.ink,
+              weight: FontWeight.w700,
+              style: FontStyle.italic,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text('Version 1.0.0', style: AppTheme.caps(size: 10)),
+        ],
+      ),
     );
   }
 }

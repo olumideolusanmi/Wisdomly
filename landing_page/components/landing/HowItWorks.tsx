@@ -5,18 +5,18 @@ import { MousePointerClick, Sparkles, Heart } from "lucide-react";
 const steps = [
   {
     icon: <MousePointerClick size={24} />,
-    title: "1. Open App",
-    description: "Launch Quotely whenever you need a quick mental boost.",
+    title: "1. Open Wisdomly",
+    description: "Open the app whenever you want a still moment or a spark of thought.",
   },
   {
     icon: <Sparkles size={24} />,
-    title: "2. Tap 'Inspire Me'",
-    description: "Hit the big button to instantly reveal a motivational quote.",
+    title: "2. Tap for Wisdom",
+    description: "One tap reveals a carefully chosen quote from thinkers across time.",
   },
   {
     icon: <Heart size={24} />,
-    title: "3. Feel Good",
-    description: "Read, smile, and carry that positivity with you. Or share it!",
+    title: "3. Reflect & Share",
+    description: "Sit with it, save your favorites, or pass it on to someone who needs it.",
   },
 ];
 
@@ -27,11 +27,11 @@ export function HowItWorks() {
         <div className="flex flex-col md:flex-row items-center gap-16">
           <div className="md:w-1/2">
             <h2 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight">
-              Inspire yourself in <br className="hidden lg:block" />
-              <span className="text-brand-500">three steps.</span>
+              Wisdom in <br className="hidden lg:block" />
+              <span className="text-brand-500">three taps.</span>
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 font-medium mb-8 leading-relaxed">
-              No signups, no onboarding, no complicated menus. Quotely is designed for instant gratification.
+              No signups. No onboarding. Just open Wisdomly and receive a quote worth sitting with.
             </p>
 
             <div className="space-y-8">
@@ -75,7 +75,7 @@ export function HowItWorks() {
 
                 <div className="mb-8">
                     <Sparkles size={40} className="text-brand-500 mx-auto mb-4" />
-                    <h4 className="text-2xl font-bold text-zinc-800 dark:text-white mb-2">Quotely</h4>
+                    <h4 className="text-2xl font-bold text-zinc-800 dark:text-white mb-2">Wisdomly</h4>
                 </div>
 
                 <div className="p-6 bg-brand-50 dark:bg-brand-900/10 rounded-2xl mb-8 w-full">
@@ -85,8 +85,8 @@ export function HowItWorks() {
                     <p className="text-sm text-zinc-500 mt-2">— Steve Jobs</p>
                 </div>
 
-                <div className="w-full h-12 bg-zinc-900 dark:bg-white rounded-xl shadow-lg flex items-center justify-center text-white dark:text-zinc-900 font-bold">
-                    Inspire Me
+                <div className="w-full h-12 bg-ink-900 dark:bg-brand-400 rounded-xl shadow-lg flex items-center justify-center text-white dark:text-ink-950 font-bold">
+                    Give Me Wisdom
                 </div>
 
               </div>

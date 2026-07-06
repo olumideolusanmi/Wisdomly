@@ -9,8 +9,8 @@ export default function Help() {
   const categories = [
     {
       icon: <Sparkles size={24} />,
-      title: "Getting Inspired",
-      description: "How to find your daily dose of motivation.",
+      title: "Finding Wisdom",
+      description: "How to receive your daily quote and use the app.",
       href: "#"
     },
     {
@@ -31,7 +31,7 @@ export default function Help() {
     <main className="min-h-screen bg-white dark:bg-zinc-950">
       <PageHeader
         title="Help Center"
-        description="Find answers, guides, and support for Quotely."
+        description="Find answers, guides, and support for Wisdomly."
       />
 
       <section className="py-20">

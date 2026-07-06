@@ -39,9 +39,9 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 relative overflow-hidden rounded-xl transition-transform group-hover:scale-110 duration-300">
-              <Image src="/app_logo.png" alt="Quotely" fill className="object-cover" />
+              <Image src="/app_logo.svg" alt="Wisdomly" fill className="object-cover" />
             </div>
-            <span className="text-2xl font-black text-zinc-900 dark:text-white tracking-tighter">Quotely</span>
+            <span className="text-2xl font-black text-zinc-900 dark:text-white tracking-tighter">Wisdomly</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -64,7 +64,7 @@ export function Navbar() {
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-zinc-950 dark:bg-zinc-100 dark:text-zinc-950 rounded-xl hover:scale-105 active:scale-95 transition-all shadow-xl shadow-brand-500/10"
             >
               <Sparkles size={16} className="mr-2 fill-current text-brand-400 dark:text-brand-600" />
-              Get Inspired
+              Start Reading
             </Link>
           </div>
 
@@ -103,7 +103,7 @@ export function Navbar() {
                 className="inline-flex items-center justify-center w-full px-4 py-4 text-lg font-bold text-white bg-zinc-950 dark:bg-white dark:text-zinc-950 rounded-2xl shadow-xl"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Inspired
+                Start Reading
               </Link>
             </div>
           </motion.div>

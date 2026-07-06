@@ -8,17 +8,31 @@
 }
 
 @theme {
-  --color-brand-50: #fdf2f3;
-  --color-brand-100: #fce4e6;
-  --color-brand-200: #f9c9cd;
-  --color-brand-300: #f4a3aa;
-  --color-brand-400: #ec7a85;
-  --color-brand-500: #e56b6f;
-  --color-brand-600: #d04951;
-  --color-brand-700: #b03840;
-  --color-brand-800: #8f2d35;
-  --color-brand-900: #76262d;
-  --color-brand-950: #410e12;
+  /* Wisdomly: amber accent */
+  --color-brand-50: #fffbeb;
+  --color-brand-100: #fef3c7;
+  --color-brand-200: #fde68a;
+  --color-brand-300: #fcd34d;
+  --color-brand-400: #fbbf24;
+  --color-brand-500: #f59e0b;
+  --color-brand-600: #d97706;
+  --color-brand-700: #b45309;
+  --color-brand-800: #92400e;
+  --color-brand-900: #78350f;
+  --color-brand-950: #451a03;
+
+  /* Wisdomly: navy neutrals (used for hero/CTA backgrounds via ink-* classes) */
+  --color-ink-50: #f0f4fa;
+  --color-ink-100: #d9e2ef;
+  --color-ink-200: #b6c3d8;
+  --color-ink-300: #7f92b0;
+  --color-ink-400: #4a5e82;
+  --color-ink-500: #263a63;
+  --color-ink-600: #1c2c4d;
+  --color-ink-700: #142140;
+  --color-ink-800: #0d1830;
+  --color-ink-900: #070f22;
+  --color-ink-950: #030716;
 }
 
 body {

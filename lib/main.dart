@@ -6,11 +6,11 @@ import 'providers/favorites_provider.dart';
 import 'providers/theme_provider.dart';
 
 void main() {
-  runApp(const QuotelyApp());
+  runApp(const WisdomlyApp());
 }
 
-class QuotelyApp extends StatelessWidget {
-  const QuotelyApp({super.key});
+class WisdomlyApp extends StatelessWidget {
+  const WisdomlyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class QuotelyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
       child: MaterialApp(
-        title: 'Quotely',
+        title: 'Wisdomly',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         home: const HomeScreen(),

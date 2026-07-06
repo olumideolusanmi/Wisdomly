@@ -5,13 +5,13 @@ import { Sparkles, Zap, Share2, Shield, Heart, Smile } from "lucide-react";
 const features = [
   {
     icon: <Sparkles size={24} />,
-    title: "Daily Quotes",
-    description: "Get a fresh dose of motivation every single day to start your morning right.",
+    title: "Daily Wisdom",
+    description: "A fresh, hand-picked quote every morning to set the tone for your day.",
   },
   {
     icon: <Zap size={24} />,
-    title: "Instant Inspiration",
-    description: "Need a boost? Just tap 'Inspire Me' and get a quote instantly.",
+    title: "Instant Insight",
+    description: "Need a lift? Tap once and receive a piece of wisdom instantly.",
   },
   {
     icon: <Share2 size={24} />,
@@ -25,13 +25,13 @@ const features = [
   },
   {
     icon: <Heart size={24} />,
-    title: "Curated Content",
-    description: "Hand-picked quotes that uplift, encourage, and motivate without being preachy.",
+    title: "Curated Voices",
+    description: "Words from philosophers, poets, and thinkers — chosen to spark real thought.",
   },
   {
     icon: <Smile size={24} />,
     title: "Simple Interface",
-    description: "A clean, distraction-free design that focuses on one thing: making you feel good.",
+    description: "A clean, distraction-free design that puts the quote front and center.",
   },
 ];
 
@@ -41,10 +41,10 @@ export function Features() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight">
-            Simple. <span className="text-brand-500">Inspiring.</span>
+            Calm. <span className="text-brand-500">Thoughtful.</span>
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 font-medium">
-            Quotely is built to give you that quick spark of positivity whenever you need it.
+            Wisdomly is a quiet corner of your phone — for a moment of insight whenever you need it.
           </p>
         </div>
 

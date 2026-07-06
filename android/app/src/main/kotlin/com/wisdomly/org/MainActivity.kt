@@ -1,4 +1,4 @@
-package com.quotely.app
+package com.wisdomly.org
 
 import io.flutter.embedding.android.FlutterActivity
 

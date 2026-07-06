@@ -1,18 +1,18 @@
-# Quotely
+# Wisdomly
 
-This is the landing page for **Quotely** - a lightweight app that gives users quick daily inspiration through short motivational quotes.
+This is the landing page for **Wisdomly** — a calm, single-purpose app that delivers hand-picked wisdom in bite-sized quotes.
 
 Built with [Next.js](https://nextjs.org) and styled with Tailwind CSS.
 
-## About Quotely
+## About Wisdomly
 
-Quotely is a simple, harmless, single-purpose app designed to do one thing well: show a quote when the user asks for it.
+Wisdomly is a quiet, ad-free app designed to do one thing well: give you a piece of wisdom worth sitting with.
 
 **Features:**
-- **Daily Inspiration**: Get quick daily inspiration.
-- **Simple Interface**: Just tap "Inspire Me".
-- **Share**: Share quotes with friends.
-- **Privacy First**: No tracking, no personal data collection.
+- **Daily Wisdom**: A fresh, curated quote every day.
+- **Simple Interface**: One tap for insight.
+- **Share**: Send favorite quotes to friends.
+- **Privacy First**: No tracking, no accounts, no data collection.
 
 ## Getting Started
 

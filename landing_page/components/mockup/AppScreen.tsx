@@ -11,9 +11,9 @@ export function AppScreen() {
       <div className="px-4 py-3 flex items-center justify-between mb-4 border-b border-zinc-200/50 dark:border-zinc-800/50">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 relative overflow-hidden rounded">
-            <Image src="/app_logo.png" alt="Quotely" fill className="object-cover" />
+            <Image src="/app_logo.svg" alt="Wisdomly" fill className="object-cover" />
           </div>
-          <h1 className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">Quotely</h1>
+          <h1 className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">Wisdomly</h1>
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export function AppScreen() {
         <div className="space-y-4">
           <button className="w-full py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-2xl font-bold shadow-lg flex items-center justify-center gap-2">
             <Sparkles size={18} />
-            Inspire Me
+            Give Me Wisdom
           </button>
           
           <button className="w-full py-4 bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 rounded-2xl font-bold flex items-center justify-center gap-2">

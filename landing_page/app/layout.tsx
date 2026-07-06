@@ -14,13 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quotely - Daily Motivational Quotes",
-  description: "Quotely gives you quick daily inspiration through short motivational quotes. Simple, harmless, and effective.",
+  title: "Wisdomly – Wisdom, one quote at a time",
+  description: "Wisdomly delivers hand-picked wisdom in bite-sized quotes. Calm, ad-free, and offline-friendly.",
   icons: {
-    icon: "/app_logo.png",
-  },
-  verification: {
-    google: "bPaHCADNvxARRv3dHBf4u6zyYCDRCB8dgj2k7gRCTVs",
+    icon: "/app_logo.svg",
   },
 };
 

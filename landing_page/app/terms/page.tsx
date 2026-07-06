@@ -19,7 +19,7 @@ export default function Terms() {
 
               <div className="prose dark:prose-invert prose-zinc prose-lg max-w-none font-sans">
                 <p className="lead text-xl text-zinc-600 dark:text-zinc-400 font-medium leading-relaxed mb-12">
-                  These Terms of Service constitute a legally binding agreement between you and Quotely concerning your access to and use of the Service.
+                  These Terms of Service constitute a legally binding agreement between you and Wisdomly concerning your access to and use of the Service.
                 </p>
 
                 <div className="grid gap-12">
@@ -30,7 +30,7 @@ export default function Terms() {
                       1. Acceptance of Terms
                     </h2>
                     <p>
-                      By downloading, installing, or using Quotely, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.
+                      By downloading, installing, or using Wisdomly, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.
                     </p>
                   </div>
 
@@ -41,7 +41,7 @@ export default function Terms() {
                     </h2>
                     <div className="bg-zinc-50 dark:bg-zinc-950/50 p-6 rounded-2xl border border-zinc-100 dark:border-zinc-800 mb-6">
                       <p className="mb-0 font-medium">
-                        Quotely is free to use for personal, non-commercial purposes.
+                        Wisdomly is free to use for personal, non-commercial purposes.
                       </p>
                     </div>
                     <p>
@@ -55,7 +55,7 @@ export default function Terms() {
                       3. Disclaimer
                     </h2>
                     <p>
-                        Quotely is provided for entertainment and inspirational purposes only. It is not intended to provide medical, mental health, or professional advice.
+                        Wisdomly is provided for entertainment and inspirational purposes only. It is not intended to provide medical, mental health, or professional advice.
                     </p>
                   </div>
 
@@ -67,8 +67,8 @@ export default function Terms() {
                     <p>
                       In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:
                     </p>
-                    <a href="mailto:hello@quotely.app" className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold no-underline hover:underline">
-                      hello@quotely.app
+                    <a href="mailto:hello@wisdomly.app" className="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold no-underline hover:underline">
+                      hello@wisdomly.app
                     </a>
                   </div>
 

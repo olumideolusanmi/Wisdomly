@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../models/quote.dart';
 import '../services/quote_service.dart';
 import '../providers/favorites_provider.dart';
-import '../providers/theme_provider.dart';
 import '../theme/app_theme.dart';
 import 'favorites_screen.dart';
 import 'settings_screen.dart';
@@ -19,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Quote _currentQuote;
+  int _pageNumber = 1;
 
   @override
   void initState() {
@@ -26,283 +25,189 @@ class _HomeScreenState extends State<HomeScreen> {
     _currentQuote = QuoteService.getRandomQuote();
   }
 
-  void _generateNewQuote() {
+  void _nextQuote() {
     setState(() {
       _currentQuote = QuoteService.getRandomQuote();
+      _pageNumber++;
     });
   }
 
   void _shareQuote() {
     Share.share(
-      '"${_currentQuote.text}" — ${_currentQuote.author}\n\nShared from Quotely',
+      '"${_currentQuote.text}" — ${_currentQuote.author}\n\nShared from Wisdomly',
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    const ink = Colors.white;
-    final muted = Colors.white.withOpacity(0.78);
-
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFE56B6F), Color(0xFFD45D72)],
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
-            child: Column(
-              children: [
-                _Header(
-                  ink: ink,
-                  onPalette: themeProvider.nextTheme,
-                  onFavorites: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const FavoritesScreen(),
-                    ),
-                  ),
-                  onSettings: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const SettingsScreen()),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'QUOTE OF THE MOMENT',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: muted,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 450),
-                    transitionBuilder: (child, animation) => FadeTransition(
-                      opacity: animation,
-                      child: SlideTransition(
-                        position: Tween<Offset>(
-                          begin: const Offset(0, 0.04),
-                          end: Offset.zero,
-                        ).animate(animation),
-                        child: child,
-                      ),
-                    ),
-                    child: _QuoteCard(
-                      key: ValueKey(_currentQuote.text),
-                      quote: _currentQuote,
-                      ink: ink,
-                      muted: muted,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                _ActionBar(
-                  quote: _currentQuote,
-                  ink: ink,
-                  onShare: _shareQuote,
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: _generateNewQuote,
-                    icon: const Icon(Icons.auto_awesome, size: 20),
-                    label: const Text('Surprise Me'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: AppTheme.primaryColor,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 18,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 0,
-                    ),
-                  ),
-                ),
-              ],
+      backgroundColor: AppTheme.paper,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _Masthead(
+              onFavorites: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const FavoritesScreen()),
+              ),
+              onSettings: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              ),
             ),
-          ),
+            const _Hairline(),
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 400),
+                switchInCurve: Curves.easeOut,
+                switchOutCurve: Curves.easeIn,
+                transitionBuilder: (child, animation) => FadeTransition(
+                  opacity: animation,
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(0.06, 0),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  ),
+                ),
+                child: _QuoteFolio(
+                  key: ValueKey(_currentQuote.text),
+                  quote: _currentQuote,
+                  pageNumber: _pageNumber,
+                ),
+              ),
+            ),
+            const _Hairline(),
+            _ActionRow(
+              quote: _currentQuote,
+              onShare: _shareQuote,
+              onTurn: _nextQuote,
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _Header extends StatelessWidget {
-  final Color ink;
-  final VoidCallback onPalette;
+class _Masthead extends StatelessWidget {
   final VoidCallback onFavorites;
   final VoidCallback onSettings;
-
-  const _Header({
-    required this.ink,
-    required this.onPalette,
-    required this.onFavorites,
-    required this.onSettings,
-  });
+  const _Masthead({required this.onFavorites, required this.onSettings});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            'Q',
-            style: GoogleFonts.playfairDisplay(
-              color: AppTheme.primaryColor,
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              fontStyle: FontStyle.italic,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 18, 16, 18),
+      child: Row(
+        children: [
+          Container(
+            width: 10,
+            height: 10,
+            decoration: const BoxDecoration(
+              color: AppTheme.amber,
+              shape: BoxShape.circle,
             ),
           ),
-        ),
-        const SizedBox(width: 12),
-        Text(
-          'Quotely',
-          style: Theme.of(
-            context,
-          ).textTheme.displayMedium?.copyWith(color: ink),
-        ),
-        const Spacer(),
-        _CircleIcon(icon: Icons.palette_outlined, onTap: onPalette, ink: ink),
-        const SizedBox(width: 8),
-        _CircleIcon(
-          icon: Icons.bookmark_border,
-          onTap: onFavorites,
-          ink: ink,
-        ),
-        const SizedBox(width: 8),
-        _CircleIcon(
-          icon: Icons.tune_rounded,
-          onTap: onSettings,
-          ink: ink,
-        ),
-      ],
-    );
-  }
-}
-
-class _CircleIcon extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-  final Color ink;
-  const _CircleIcon({
-    required this.icon,
-    required this.onTap,
-    required this.ink,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white.withOpacity(0.18),
-      shape: const CircleBorder(),
-      child: InkWell(
-        customBorder: const CircleBorder(),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(9),
-          child: Icon(icon, size: 20, color: ink),
-        ),
-      ),
-    );
-  }
-}
-
-class _QuoteCard extends StatelessWidget {
-  final Quote quote;
-  // Card is white, so use the dark on-card palette regardless of page bg.
-  static const Color _cardInk = AppTheme.textColor;
-  static const Color _cardMuted = AppTheme.secondaryTextColor;
-
-  const _QuoteCard({
-    super.key,
-    required this.quote,
-    required Color ink,
-    required Color muted,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(28, 24, 28, 28),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 30,
-            offset: const Offset(0, 12),
-          ),
+          const SizedBox(width: 10),
+          Text('WISDOMLY', style: AppTheme.caps(color: AppTheme.ink, size: 13)),
+          const SizedBox(width: 8),
+          Container(width: 3, height: 3, color: AppTheme.rule),
+          const SizedBox(width: 8),
+          Text('EST. 2026', style: AppTheme.caps(size: 10)),
+          const Spacer(),
+          _MastheadIcon(icon: Icons.bookmark_outline, onTap: onFavorites),
+          _MastheadIcon(icon: Icons.tune_rounded, onTap: onSettings),
         ],
       ),
+    );
+  }
+}
+
+class _MastheadIcon extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onTap;
+  const _MastheadIcon({required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: onTap,
+      icon: Icon(icon, size: 22, color: AppTheme.ink),
+      splashRadius: 22,
+    );
+  }
+}
+
+class _Hairline extends StatelessWidget {
+  const _Hairline();
+  @override
+  Widget build(BuildContext context) => Container(height: 1, color: AppTheme.rule);
+}
+
+class _QuoteFolio extends StatelessWidget {
+  final Quote quote;
+  final int pageNumber;
+  const _QuoteFolio({super.key, required this.quote, required this.pageNumber});
+
+  @override
+  Widget build(BuildContext context) {
+    final pageLabel = pageNumber.toString().padLeft(2, '0');
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(28, 28, 28, 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '“',
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 72,
-              height: 0.8,
-              color: AppTheme.primaryColor,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Text(
-                quote.text,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(color: _cardInk),
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(height: 1, color: _cardMuted.withOpacity(0.2)),
-          const SizedBox(height: 16),
           Row(
             children: [
-              Container(
-                width: 6,
-                height: 6,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryColor,
-                  shape: BoxShape.circle,
-                ),
-              ),
+              Text('FOLIO', style: AppTheme.caps(size: 10, color: AppTheme.amber)),
               const SizedBox(width: 10),
+              Container(width: 24, height: 1, color: AppTheme.amber),
+              const SizedBox(width: 10),
+              Text('N°$pageLabel', style: AppTheme.caps(size: 10)),
+            ],
+          ),
+          const SizedBox(height: 32),
+          Text(
+            'On Reflection',
+            style: AppTheme.serifDisplay(size: 30),
+          ),
+          const SizedBox(height: 28),
+          Expanded(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 2,
+                      height: constraints.maxHeight,
+                      color: AppTheme.amber,
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          quote.text,
+                          style: AppTheme.serifQuote(size: 24, color: AppTheme.ink),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Container(width: 40, height: 1, color: AppTheme.ink),
+              const SizedBox(width: 14),
               Expanded(
                 child: Text(
                   quote.author.toUpperCase(),
-                  style: GoogleFonts.dmSans(
-                    color: _cardMuted,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.4,
-                  ),
+                  style: AppTheme.caps(size: 11, color: AppTheme.ink, spacing: 3),
                 ),
               ),
             ],
@@ -313,86 +218,99 @@ class _QuoteCard extends StatelessWidget {
   }
 }
 
-class _ActionBar extends StatelessWidget {
+class _ActionRow extends StatelessWidget {
   final Quote quote;
-  final Color ink;
   final VoidCallback onShare;
-
-  const _ActionBar({
+  final VoidCallback onTurn;
+  const _ActionRow({
     required this.quote,
-    required this.ink,
     required this.onShare,
+    required this.onTurn,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _PillAction(
-          icon: Icons.ios_share_rounded,
-          label: 'Share',
-          ink: ink,
-          onTap: onShare,
-        ),
-        const SizedBox(width: 12),
-        Consumer<FavoritesProvider>(
-          builder: (context, fav, _) {
-            final isFav = fav.isFavorite(quote);
-            return _PillAction(
-              icon: isFav ? Icons.bookmark_rounded : Icons.bookmark_outline,
-              label: isFav ? 'Saved' : 'Save',
-              ink: ink,
-              highlight: isFav,
-              onTap: () => fav.toggleFavorite(quote),
-            );
-          },
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 14, 20, 20),
+      child: Row(
+        children: [
+          _GhostIcon(icon: Icons.ios_share_rounded, onTap: onShare),
+          const SizedBox(width: 8),
+          Consumer<FavoritesProvider>(
+            builder: (context, fav, _) {
+              final isFav = fav.isFavorite(quote);
+              return _GhostIcon(
+                icon: isFav ? Icons.bookmark_rounded : Icons.bookmark_add_outlined,
+                filled: isFav,
+                onTap: () => fav.toggleFavorite(quote),
+              );
+            },
+          ),
+          const Spacer(),
+          _TurnButton(onTap: onTurn),
+        ],
+      ),
     );
   }
 }
 
-class _PillAction extends StatelessWidget {
+class _GhostIcon extends StatelessWidget {
   final IconData icon;
-  final String label;
-  final Color ink;
-  final bool highlight;
   final VoidCallback onTap;
-
-  const _PillAction({
+  final bool filled;
+  const _GhostIcon({
     required this.icon,
-    required this.label,
-    required this.ink,
     required this.onTap,
-    this.highlight = false,
+    this.filled = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final fg = highlight ? AppTheme.primaryColor : ink;
-    final bg = highlight ? Colors.white : Colors.white.withOpacity(0.18);
     return Material(
-      color: bg,
-      borderRadius: BorderRadius.circular(40),
+      color: filled ? AppTheme.ink : Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: AppTheme.ink.withValues(alpha: filled ? 0 : 0.25)),
+      ),
       child: InkWell(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(12),
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+          padding: const EdgeInsets.all(12),
+          child: Icon(
+            icon,
+            size: 20,
+            color: filled ? AppTheme.amber : AppTheme.ink,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TurnButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _TurnButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: AppTheme.ink,
+      borderRadius: BorderRadius.circular(4),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 20, color: fg),
-              const SizedBox(width: 8),
               Text(
-                label,
-                style: GoogleFonts.dmSans(
-                  color: fg,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                ),
+                'TURN THE PAGE',
+                style: AppTheme.caps(size: 12, color: AppTheme.amber, spacing: 2.6),
               ),
+              const SizedBox(width: 10),
+              const Icon(Icons.arrow_forward_rounded, size: 18, color: AppTheme.amber),
             ],
           ),
         ),
